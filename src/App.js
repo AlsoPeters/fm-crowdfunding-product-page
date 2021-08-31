@@ -2,7 +2,7 @@
 function App() {
   return (
     <div className="App">
-      <h1>Asah</h1>
+      <h1 className='font-sans font-bold' >Asah</h1>
     </div>
   );
 }
