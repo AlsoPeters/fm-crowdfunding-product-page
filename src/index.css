@@ -5,6 +5,10 @@
 @tailwind utilities;
 @layer base {
   button {
-    @apply bg-primary-dark-cyan rounded-full text-white h-12 w-44;
+    @apply bg-primary-moderate-cyan rounded-full text-white h-14  w-44;
+  }
+
+  .card {
+    @apply rounded-md;
   }
 }
