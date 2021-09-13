@@ -3,13 +3,26 @@ import { ReactComponent as Logo } from './images/logo-mastercraft.svg';
 import { ReactComponent as Bookmark } from './images/icon-bookmark.svg';
 import ProgressBar from './components/ProgressBar';
 import PledgeCard from './components/PledgeCard';
+import MobileMenu from './components/MobileMenu';
+import { useState } from 'react';
 
 function App() {
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  const handleHamburgerOpen = () => {
+    setMenuOpened(!menuOpened);
+  };
+
   return (
     <div className='font-sans bg-gray-100 bg-no-repeat bg-contain App bg-mobile-hero'>
+      <MobileMenu opened={menuOpened} closeMenu={handleHamburgerOpen} />
+
       <header className='grid grid-cols-2 mb-48 '>
         <h2 className='mt-4 ml-6 text-2xl font-bold text-white '>crowdfund</h2>
-        <Hamburger className='col-end-4 mt-6 mr-6' />
+        <Hamburger
+          onClick={handleHamburgerOpen}
+          className='col-end-4 mt-6 mr-6'
+        />
       </header>
 
       <div className='px-6 '>
