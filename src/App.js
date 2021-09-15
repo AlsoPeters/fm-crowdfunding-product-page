@@ -4,18 +4,28 @@ import { ReactComponent as Bookmark } from './images/icon-bookmark.svg';
 import ProgressBar from './components/ProgressBar';
 import PledgeCard from './components/PledgeCard';
 import MobileMenu from './components/MobileMenu';
+import BackProjectModal from './components/BackProjectModal';
 import { useState } from 'react';
 
 function App() {
   const [menuOpened, setMenuOpened] = useState(false);
+  const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
 
   const handleHamburgerOpen = () => {
     setMenuOpened(!menuOpened);
   };
 
+  const backProjectModalOpenHandler = () => {
+    setBackProjectModalOpen(!backProjectModalOpen);
+  };
+  console.log(backProjectModalOpen);
   return (
     <div className='font-sans bg-gray-100 bg-no-repeat bg-contain App bg-mobile-hero'>
       <MobileMenu opened={menuOpened} closeMenu={handleHamburgerOpen} />
+      <BackProjectModal
+        backProjectModalOpenHandler={backProjectModalOpenHandler}
+        backProjectModalOpen={backProjectModalOpen}
+      />
 
       <header className='grid grid-cols-2 mb-48 '>
         <h2 className='mt-4 ml-6 text-2xl font-bold text-white '>crowdfund</h2>
@@ -36,7 +46,9 @@ function App() {
             strain.
           </p>
           <div className='flex px-6 mb-8 place-content-between'>
-            <button className='w-52'>Back this project</button>
+            <button onClick={backProjectModalOpenHandler} className='w-52'>
+              Back this project
+            </button>
             <Bookmark />
           </div>
         </div>
