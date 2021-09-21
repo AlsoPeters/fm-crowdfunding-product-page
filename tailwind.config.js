@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      gridTemplateRows: {
+        modal: '1fr 6fr .5fr',
+      },
+
       backgroundImage: {
         'mobile-hero': "url('./images/image-hero-mobile.jpg')",
       },
