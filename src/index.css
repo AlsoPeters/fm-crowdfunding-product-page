@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap');
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
 @layer base {
   button {
-    @apply bg-primary-moderate-cyan rounded-full text-white h-14  w-44;
+    @apply text-white rounded-full bg-primary-moderate-cyan h-14 w-44;
   }
 
   .card {
