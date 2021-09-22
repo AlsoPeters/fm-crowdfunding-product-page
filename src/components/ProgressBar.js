@@ -1,12 +1,13 @@
 export default function ProgressBar() {
   return (
     <div>
-      <div className='relative h-3 max-w-xl overflow-hidden rounded-full'>
-        <div className='absolute w-full h-full bg-gray-200 '></div>
-        <div
-          className='absolute h-full rounded-full bg-primary-moderate-cyan '
-          style={{ width: '50%' }}
-        ></div>
+      <div className='relative pt-3'>
+        <div className='flex h-3 overflow-hidden bg-gray-300 rounded-md'>
+          <div
+            style={{ width: '75%' }}
+            className='bg-primary-moderate-cyan'
+          ></div>
+        </div>
       </div>
     </div>
   );

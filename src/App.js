@@ -15,6 +15,11 @@ function App() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
 
+  const amountBackedPercentage = () => {
+    return (100 * amountBacked) / 100000;
+  };
+
+  console.log(amountBackedPercentage());
   const handleHamburgerOpen = () => {
     setMenuOpened(!menuOpened);
   };
@@ -62,7 +67,7 @@ function App() {
             <h2 className='mt-6 mb-2 text-3xl font-bold'>
               ${amountBacked.toLocaleString()}
             </h2>
-            <p className='mb-4 text-neutral-dark-gray'>of $1000,000 backed</p>
+            <p className='mb-4 text-neutral-dark-gray'>of $100,000 backed</p>
           </div>
 
           <div className='self-center w-20 h-px bg-gray-300 rounded-full'></div>
@@ -81,7 +86,16 @@ function App() {
             <p className='mb-8 text-neutral-dark-gray'>days left</p>
           </div>
           <div className='px-6 mb-8'>
-            <ProgressBar />
+            <div>
+              <div className='pt-3 '>
+                <div className='flex h-3 overflow-hidden bg-gray-300 rounded-md'>
+                  <div
+                    style={{ width: `${amountBackedPercentage()}%` }}
+                    className=' bg-primary-moderate-cyan'
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className='flex flex-col px-6 bg-white border-2 border-white card '>
