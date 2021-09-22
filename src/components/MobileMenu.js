@@ -1,5 +1,4 @@
 export default function MobileMenu(props) {
-  console.log(props);
   if (props.opened === true)
     return (
       <div

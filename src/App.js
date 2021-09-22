@@ -8,9 +8,18 @@ import BackProjectModal from './components/BackProjectModal';
 import { useState } from 'react';
 
 function App() {
+  const [amountBacked, setAmountBacked] = useState(89914);
+  const [totalBackers, setTotalBackers] = useState(5007);
+  const [daysLeft, setDaysLeft] = useState(56);
+
   const [menuOpened, setMenuOpened] = useState(false);
   const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
 
+  const amountBackedPercentage = () => {
+    return (100 * amountBacked) / 100000;
+  };
+
+  console.log(amountBackedPercentage());
   const handleHamburgerOpen = () => {
     setMenuOpened(!menuOpened);
   };
@@ -18,7 +27,7 @@ function App() {
   const backProjectModalOpenHandler = () => {
     setBackProjectModalOpen(!backProjectModalOpen);
   };
-  console.log(backProjectModalOpen);
+
   return (
     <div className='font-sans bg-gray-100 bg-no-repeat bg-contain App bg-mobile-hero'>
       <MobileMenu opened={menuOpened} closeMenu={handleHamburgerOpen} />
@@ -55,25 +64,38 @@ function App() {
 
         <div className='flex flex-col mb-8 text-center bg-white border-2 border-white card place-content-center'>
           <div>
-            <h2 className='mt-6 mb-2 text-3xl font-bold'>$$$</h2>
-            <p className='mb-4 text-neutral-dark-gray'>of $1000,000 backed</p>
+            <h2 className='mt-6 mb-2 text-3xl font-bold'>
+              ${amountBacked.toLocaleString()}
+            </h2>
+            <p className='mb-4 text-neutral-dark-gray'>of $100,000 backed</p>
           </div>
 
           <div className='self-center w-20 h-px bg-gray-300 rounded-full'></div>
 
           <div>
-            <h2 className='mt-6 text-3xl font-bold'>123</h2>
+            <h2 className='mt-6 text-3xl font-bold'>
+              {totalBackers.toLocaleString()}
+            </h2>
             <p className='mb-4 text-neutral-dark-gray'>total backers</p>
           </div>
 
           <div className='self-center w-20 h-px bg-gray-300 rounded-full'></div>
 
           <div>
-            <h2 className='mt-6 text-3xl font-bold'>123</h2>
+            <h2 className='mt-6 text-3xl font-bold'>{daysLeft}</h2>
             <p className='mb-8 text-neutral-dark-gray'>days left</p>
           </div>
           <div className='px-6 mb-8'>
-            <ProgressBar />
+            <div>
+              <div className='pt-3 '>
+                <div className='flex h-3 overflow-hidden bg-gray-300 rounded-md'>
+                  <div
+                    style={{ width: `${amountBackedPercentage()}%` }}
+                    className=' bg-primary-moderate-cyan'
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className='flex flex-col px-6 bg-white border-2 border-white card '>
