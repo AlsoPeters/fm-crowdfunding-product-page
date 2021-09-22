@@ -19,7 +19,6 @@ function App() {
     return (100 * amountBacked) / 100000;
   };
 
-  console.log(amountBackedPercentage());
   const handleHamburgerOpen = () => {
     setMenuOpened(!menuOpened);
   };
@@ -91,7 +90,7 @@ function App() {
                 <div className='flex h-3 overflow-hidden bg-gray-300 rounded-md'>
                   <div
                     style={{ width: `${amountBackedPercentage()}%` }}
-                    className=' bg-primary-moderate-cyan'
+                    className='rounded-md bg-primary-moderate-cyan'
                   ></div>
                 </div>
               </div>
@@ -113,8 +112,6 @@ function App() {
             USB sticks to be stored under the stand.
           </p>
 
-          <PledgeCard />
-          <PledgeCard />
           <PledgeCard />
         </div>
       </div>
