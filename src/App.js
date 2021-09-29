@@ -1,16 +1,43 @@
 import { ReactComponent as Hamburger } from './images/icon-hamburger.svg';
 import { ReactComponent as Logo } from './images/logo-mastercraft.svg';
 import { ReactComponent as Bookmark } from './images/icon-bookmark.svg';
-import ProgressBar from './components/ProgressBar';
-import PledgeCard from './components/PledgeCard';
 import MobileMenu from './components/MobileMenu';
 import BackProjectModal from './components/BackProjectModal';
 import { useState } from 'react';
+import Card from './components/Card';
+
+const pledgeTiers = [
+  {
+    id: 1,
+    title: 'Bamboo Stand',
+    amount: 'Pledge $25 or more',
+    description:
+      "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.",
+    amount_left: 101,
+  },
+  {
+    id: 2,
+    title: 'Black Edition Stand',
+    amount: 'Pledge $75 or more',
+    description:
+      "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
+    amount_left: 64,
+  },
+  {
+    id: 3,
+    title: 'Mahogany Special Edition',
+    amount: 'Pledge $200 or more',
+    description:
+      "You get a two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.",
+    amount_left: 0,
+  },
+];
 
 function App() {
   const [amountBacked, setAmountBacked] = useState(89914);
   const [totalBackers, setTotalBackers] = useState(5007);
   const [daysLeft, setDaysLeft] = useState(56);
+  const [bambooStandAmount, setBambooStandAmount] = useState(101);
 
   const [menuOpened, setMenuOpened] = useState(false);
   const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
@@ -19,7 +46,6 @@ function App() {
     return (100 * amountBacked) / 100000;
   };
 
-  console.log(amountBackedPercentage());
   const handleHamburgerOpen = () => {
     setMenuOpened(!menuOpened);
   };
@@ -91,7 +117,7 @@ function App() {
                 <div className='flex h-3 overflow-hidden bg-gray-300 rounded-md'>
                   <div
                     style={{ width: `${amountBackedPercentage()}%` }}
-                    className=' bg-primary-moderate-cyan'
+                    className='rounded-md bg-primary-moderate-cyan'
                   ></div>
                 </div>
               </div>
@@ -113,9 +139,11 @@ function App() {
             USB sticks to be stored under the stand.
           </p>
 
-          <PledgeCard />
-          <PledgeCard />
-          <PledgeCard />
+          <div>
+            {pledgeTiers.map((tier) => (
+              <Card key={tier.id} tier={tier} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
