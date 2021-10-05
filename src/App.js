@@ -9,6 +9,13 @@ import Card from './components/Card';
 const pledgeTiers = [
   {
     id: 1,
+    title: 'Pledge with no reward',
+    description:
+      'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.',
+    amount_left: 'none',
+  },
+  {
+    id: 2,
     title: 'Bamboo Stand',
     amount: 'Pledge $25 or more',
     description:
@@ -16,7 +23,7 @@ const pledgeTiers = [
     amount_left: 101,
   },
   {
-    id: 2,
+    id: 3,
     title: 'Black Edition Stand',
     amount: 'Pledge $75 or more',
     description:
@@ -24,7 +31,7 @@ const pledgeTiers = [
     amount_left: 64,
   },
   {
-    id: 3,
+    id: 4,
     title: 'Mahogany Special Edition',
     amount: 'Pledge $200 or more',
     description:
@@ -37,7 +44,8 @@ function App() {
   const [amountBacked, setAmountBacked] = useState(89914);
   const [totalBackers, setTotalBackers] = useState(5007);
   const [daysLeft, setDaysLeft] = useState(56);
-  const [bambooStandAmount, setBambooStandAmount] = useState(101);
+
+  const [pledgeData, setPledgeData] = useState(pledgeTiers);
 
   const [menuOpened, setMenuOpened] = useState(false);
   const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
@@ -54,12 +62,30 @@ function App() {
     setBackProjectModalOpen(!backProjectModalOpen);
   };
 
+  const handleUpdatePledges = (amountLeft, id) => {
+    let newArray = [...pledgeData];
+
+    let index = newArray.findIndex((pledgeTier) => id === pledgeTier.id);
+
+    if (index > -1) {
+      newArray[index].amount_left = amountLeft;
+      console.log(newArray);
+      setPledgeData(newArray);
+    } else {
+      console.log('erron');
+    }
+
+    console.log(amountLeft, id);
+  };
+
   return (
     <div className='font-sans bg-gray-100 bg-no-repeat bg-contain App bg-mobile-hero'>
       <MobileMenu opened={menuOpened} closeMenu={handleHamburgerOpen} />
       <BackProjectModal
         backProjectModalOpenHandler={backProjectModalOpenHandler}
         backProjectModalOpen={backProjectModalOpen}
+        pledgeData={pledgeData}
+        handleUpdatePledges={handleUpdatePledges}
       />
 
       <header className='grid grid-cols-2 mb-48 '>
@@ -140,8 +166,12 @@ function App() {
           </p>
 
           <div>
-            {pledgeTiers.map((tier) => (
-              <Card key={tier.id} tier={tier} />
+            {pledgeData.map((tier) => (
+              <Card
+                handleUpdatePledges={handleUpdatePledges}
+                key={tier.id}
+                tier={tier}
+              />
             ))}
           </div>
         </div>
@@ -151,3 +181,15 @@ function App() {
 }
 
 export default App;
+
+// const [bambooStandAmount, setbambooStandAmount] = useState(
+//   pledgeTiers[1].amount_left
+// );
+// const [blackEditionStandAmount, setBlackEditionStandAmount] = useState(
+//   pledgeTiers[2].amount_left
+// );
+// const [mahoganySpecialEditionAmount, setMahoganySpecialEditionAmount] =
+//   useState(pledgeTiers[3].amount_left);
+
+// const [menuOpened, setMenuOpened] = useState(false);
+// const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);

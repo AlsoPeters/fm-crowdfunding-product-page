@@ -1,4 +1,5 @@
 import { ReactComponent as ModalClose } from '../images/icon-close-modal.svg';
+import BackerCard from './BackerCard';
 
 export default function BackProjectModal(props) {
   if (props.backProjectModalOpen === true)
@@ -18,38 +19,14 @@ export default function BackProjectModal(props) {
                 Want to support us in bringing Mastercraft Bamboo Monitor Riser
                 out in the world?
               </p>
-              <div className='px-4 mb-6 border-2 rounded-md'>
-                <div className='flex flex-row items-center my-6'>
-                  <input type='radio' className='mr-2 border-4 '></input>
-                  <p className='font-bold '>Pledge with no reward</p>
-                </div>
-                <p className='mb-6 text-neutral-dark-gray'>
-                  Choose to support us without a reward if you simply believe in
-                  our project. As a backer, you will be signed up to receive
-                  product updates via email.
-                </p>
-              </div>
-              <div className='px-4 mb-6 border-2 rounded-md'>
-                <div className='flex flex-row items-center my-6'>
-                  <input type='radio' className='mr-2 border-4 '></input>
-                  <p className='font-bold '>Pledge with no reward</p>
-                </div>
-                <p className='mb-6 text-neutral-dark-gray'>
-                  Choose to support us without a reward if you simply believe in
-                  our project. As a backer, you will be signed up to receive
-                  product updates via email.
-                </p>
-              </div>
-              <div className='px-4 mb-6 border-2 rounded-md'>
-                <div className='flex flex-row items-center my-6'>
-                  <input type='radio' className='mr-2 border-4 '></input>
-                  <p className='font-bold '>Pledge with no reward</p>
-                </div>
-                <p className='mb-6 text-neutral-dark-gray'>
-                  Choose to support us without a reward if you simply believe in
-                  our project. As a backer, you will be signed up to receive
-                  product updates via email.
-                </p>
+              <div>
+                {props.pledgeData.map((tier) => (
+                  <BackerCard
+                    key={tier.id}
+                    tier={tier}
+                    handleUpdatePledges={props.handleUpdatePledges}
+                  />
+                ))}
               </div>
             </div>
           </div>
