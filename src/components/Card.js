@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
 function Card(props) {
-  const [amountLeft, setAmountLeft] = useState(props.tier.amount_left);
-
   console.log(props.tier);
 
   return (
@@ -38,6 +36,7 @@ function Card(props) {
                 );
               }}
               className='text-base font-normal'
+              disabled={props.tier.amount_left <= 0 ? true : false}
             >
               Select Reward
             </button>
