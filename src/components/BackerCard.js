@@ -33,21 +33,23 @@ export default function BackerCard(props) {
           )}
         </div>
         <div>
-          <p className='text-center text-neutral-dark-gray'>
-            Enter your pledge
-          </p>
-          <div className='flex'>
-            <span className=''>
-              $
-              <input
-                type='number'
-                className='w-24 px-4 font-bold text-black border-2 rounded-full '
-                placeholder={props.tier.dollar_amount}
-              />
-            </span>
-
-            <button className='h-12 w-28'>Continue</button>
-          </div>
+          {props.tier.amount_left === 'none' ? (
+            <></>
+          ) : (
+            <>
+              <p className='mb-6 text-center text-neutral-dark-gray'>
+                Enter your pledge
+              </p>
+              <div className='flex justify-between mb-6'>
+                <input
+                  type='number'
+                  className='font-bold text-center text-black border-2 border-gray-300 rounded-full w-28 h-14 '
+                  placeholder={props.tier.dollar_amount}
+                />
+                <button className='w-32 h-14 '>Continue</button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
