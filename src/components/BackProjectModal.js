@@ -25,6 +25,8 @@ export default function BackProjectModal(props) {
                     key={tier.id}
                     tier={tier}
                     handleUpdatePledges={props.handleUpdatePledges}
+                    totalBackers={props.totalBackers}
+                    setTotalBackers={props.setTotalBackers}
                   />
                 ))}
               </div>

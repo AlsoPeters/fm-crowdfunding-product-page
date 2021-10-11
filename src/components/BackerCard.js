@@ -46,7 +46,14 @@ export default function BackerCard(props) {
                   className='font-bold text-center text-black border-2 border-gray-300 rounded-full w-28 h-14 '
                   placeholder={props.tier.dollar_amount}
                 />
-                <button className='w-32 h-14 '>Continue</button>
+                <button
+                  className='w-32 h-14 '
+                  onClick={() => {
+                    props.setTotalBackers(props.totalBackers + 1);
+                  }}
+                >
+                  Continue
+                </button>
               </div>
             </>
           )}

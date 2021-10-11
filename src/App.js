@@ -89,6 +89,8 @@ function App() {
         backProjectModalOpen={backProjectModalOpen}
         pledgeData={pledgeData}
         handleUpdatePledges={handleUpdatePledges}
+        totalBackers={totalBackers}
+        setTotalBackers={setTotalBackers}
       />
 
       <header className='grid grid-cols-2 mb-48 '>
