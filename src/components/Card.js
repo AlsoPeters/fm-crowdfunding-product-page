@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function Card(props) {
-  console.log(props.tier);
+  //console.log(props.tier);
 
   return (
     <div>

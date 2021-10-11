@@ -27,6 +27,8 @@ export default function BackProjectModal(props) {
                     handleUpdatePledges={props.handleUpdatePledges}
                     totalBackers={props.totalBackers}
                     setTotalBackers={props.setTotalBackers}
+                    amountBacked={props.amountBacked}
+                    setAmountBacked={props.setAmountBacked}
                   />
                 ))}
               </div>

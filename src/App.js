@@ -91,6 +91,8 @@ function App() {
         handleUpdatePledges={handleUpdatePledges}
         totalBackers={totalBackers}
         setTotalBackers={setTotalBackers}
+        amountBacked={amountBacked}
+        setAmountBacked={setAmountBacked}
       />
 
       <header className='grid grid-cols-2 mb-48 '>
