@@ -8,16 +8,21 @@ export default function BackerCard(props) {
   let handleInputChange = (event) => {
     setValue(event.target.value);
   };
-  console.log(props.tier.dollar_amount);
+
+  console.log(props.pledgeCompletedModalOpen);
+
   const handleSubmit = () => {
     if (value < props.tier.dollar_amount) {
       alert('erron');
     } else {
+      props.pledgeCompletedModalOpenHandler();
+      props.handleUpdatePledges(props.tier.amount_left - 1, props.tier.id);
       props.setTotalBackers(props.totalBackers + 1);
       props.setAmountBacked(parseFloat(props.amountBacked) + parseFloat(value));
+      props.setBackProjectModalOpenHandler();
     }
   };
-
+  console.log(props.pledgeCompletedModalOpen);
   return (
     <div>
       <div

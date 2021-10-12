@@ -5,6 +5,7 @@ import MobileMenu from './components/MobileMenu';
 import BackProjectModal from './components/BackProjectModal';
 import { useState } from 'react';
 import Card from './components/Card';
+import PledgeCompletedModal from './components/PledgeCompletedModal';
 
 const pledgeTiers = [
   {
@@ -52,6 +53,8 @@ function App() {
 
   const [menuOpened, setMenuOpened] = useState(false);
   const [backProjectModalOpen, setBackProjectModalOpen] = useState(false);
+  const [pledgeCompletedModalOpen, setPledgeCompletedModalOpen] =
+    useState(false);
 
   const amountBackedPercentage = () => {
     return (100 * amountBacked) / 100000;
@@ -63,6 +66,10 @@ function App() {
 
   const backProjectModalOpenHandler = () => {
     setBackProjectModalOpen(!backProjectModalOpen);
+  };
+
+  const pledgeCompletedModalOpenHandler = () => {
+    setPledgeCompletedModalOpen(!pledgeCompletedModalOpen);
   };
 
   const handleUpdatePledges = (amountLeft, id) => {
@@ -93,6 +100,14 @@ function App() {
         setTotalBackers={setTotalBackers}
         amountBacked={amountBacked}
         setAmountBacked={setAmountBacked}
+        pledgeCompletedModalOpen={pledgeCompletedModalOpen}
+        setPledgeCompletedModalOpen={setPledgeCompletedModalOpen}
+        pledgeCompletedModalOpenHandler={pledgeCompletedModalOpenHandler}
+      />
+      <PledgeCompletedModal
+        pledgeCompletedModalOpen={pledgeCompletedModalOpen}
+        setPledgeCompletedModalOpen={setPledgeCompletedModalOpen}
+        pledgeCompletedModalOpenHandler={pledgeCompletedModalOpenHandler}
       />
 
       <header className='grid grid-cols-2 mb-48 '>
