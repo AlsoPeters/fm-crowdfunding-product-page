@@ -111,7 +111,7 @@ function App() {
       />
 
       <header className='grid grid-cols-2 mb-48 '>
-        <h2 className='mt-4 ml-6 text-2xl font-bold text-white '>crowdfund</h2>
+        <h2 className='mt-4 ml-6 text-2xl font-bold text-white'>crowdfund</h2>
         <Hamburger
           onClick={handleHamburgerOpen}
           className='col-end-4 mt-6 mr-6'
