@@ -25,6 +25,20 @@ export default function BackProjectModal(props) {
                     key={tier.id}
                     tier={tier}
                     handleUpdatePledges={props.handleUpdatePledges}
+                    totalBackers={props.totalBackers}
+                    setTotalBackers={props.setTotalBackers}
+                    amountBacked={props.amountBacked}
+                    setAmountBacked={props.setAmountBacked}
+                    setPledgeCompletedModalOpen={
+                      props.setPledgeCompleteModalOpen
+                    }
+                    pledgeCompletedModalOpen={props.pledgeCompletedModalOpen}
+                    setBackProjectModalOpenHandler={
+                      props.backProjectModalOpenHandler
+                    }
+                    pledgeCompletedModalOpenHandler={
+                      props.pledgeCompletedModalOpenHandler
+                    }
                   />
                 ))}
               </div>

@@ -1,8 +1,28 @@
 import { useState } from 'react';
 
 export default function BackerCard(props) {
-  console.log(props.tier);
+  console.log(props);
 
+  const [value, setValue] = useState(0);
+
+  let handleInputChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  console.log(props.pledgeCompletedModalOpen);
+
+  const handleSubmit = () => {
+    if (value < props.tier.dollar_amount) {
+      alert('erron');
+    } else {
+      props.pledgeCompletedModalOpenHandler();
+      props.handleUpdatePledges(props.tier.amount_left - 1, props.tier.id);
+      props.setTotalBackers(props.totalBackers + 1);
+      props.setAmountBacked(parseFloat(props.amountBacked) + parseFloat(value));
+      props.setBackProjectModalOpenHandler();
+    }
+  };
+  console.log(props.pledgeCompletedModalOpen);
   return (
     <div>
       <div
@@ -43,10 +63,14 @@ export default function BackerCard(props) {
               <div className='flex justify-between mb-6'>
                 <input
                   type='number'
+                  min={props.dollar_amount}
+                  onChange={handleInputChange}
                   className='font-bold text-center text-black border-2 border-gray-300 rounded-full w-28 h-14 '
                   placeholder={props.tier.dollar_amount}
                 />
-                <button className='w-32 h-14 '>Continue</button>
+                <button className='w-32 h-14 ' onClick={handleSubmit}>
+                  Continue
+                </button>
               </div>
             </>
           )}
