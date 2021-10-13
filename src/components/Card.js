@@ -29,12 +29,7 @@ function Card(props) {
               <div className='content-center pt-2 pl-2 text-base'> left</div>
             </div>
             <button
-              onClick={() => {
-                props.handleUpdatePledges(
-                  props.tier.amount_left - 1,
-                  props.tier.id
-                );
-              }}
+              onClick={props.backProjectModalOpenHandler}
               className='text-base font-normal'
               disabled={props.tier.amount_left <= 0 ? true : false}
             >
