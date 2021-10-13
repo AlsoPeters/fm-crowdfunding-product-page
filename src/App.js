@@ -191,6 +191,7 @@ function App() {
             {pledgeData.map((tier) => (
               <Card
                 handleUpdatePledges={handleUpdatePledges}
+                backProjectModalOpenHandler={backProjectModalOpenHandler}
                 key={tier.id}
                 tier={tier}
               />
